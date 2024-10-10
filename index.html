@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Teaching Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f1f1f1;
+        }
+        .header img {
+            max-width: 150px;
+        }
+        .container {
+            margin: 50px auto;
+            width: 50%;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with logos -->
+    <div class="header">
+        <img src="saint-josephs-university-logo.png" alt="Saint Joseph's University Logo" id="sju-logo">
+        <img src="HaubLogo.png" alt="Haub School of Business Logo" id="haub-logo">
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>AI Teaching Assistant</h1>
+        <form>
+            <label for="textBox">Your AI Assistant says:</label>
+            <input type="text" id="textBox" name="textBox" placeholder="Hi! It is your AI teaching assistant at Haub School of Business! How can I help with your learning?">
+        </form>
+
+        <!-- GPT Search Box -->
+        <h2>Ask the AI Assistant</h2>
+        <form action="your_gpt_api_endpoint" method="POST">
+            <input type="text" id="gpt-query" name="gpt-query" placeholder="Ask me anything related to your learning">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>
+</html>
