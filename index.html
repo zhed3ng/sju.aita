@@ -22,18 +22,27 @@
             margin: 50px auto;
             width: 50%;
         }
-        input[type="text"] {
+        /* First textbox (AI assistant) - background transparent */
+        input[type="text"]#textBox {
             width: 100%;
             padding: 15px;
             margin: 20px 0;
             font-size: 16px;
-            border: none; /* Remove the border */
-            outline: none; /* Remove the outline */
-            background-color: #f1f1f1; /* Light background color */
+            border: none; /* Remove border */
+            outline: none; /* Remove outline */
+            background-color: transparent; /* Transparent background */
         }
-        input[type="text"]:focus {
-            border: 1px solid transparent; /* Keep outline transparent on focus */
-            background-color: #f9f9f9; /* Optional: Change background color on focus */
+        input[type="text"]#textBox:focus {
+            background-color: transparent; /* Keep background transparent on focus */
+        }
+        /* Second textbox (GPT query) - round corners */
+        input[type="text"]#gpt-query {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 16px;
+            border: 1px solid #ccc; /* Border around the text box */
+            border-radius: 15px; /* Rounded corners */
         }
         input[type="submit"] {
             padding: 10px 20px;
@@ -54,19 +63,20 @@
 
     <!-- Header with logos -->
     <div class="header">
-        <img src="path_to_sju_logo" alt="saint-josephs-university-logo.png" id="sju-logo">
-        <img src="path_to_haub_logo" alt="HaubLogo.png" id="haub-logo">
+        <img src="saint-josephs-university-logo.png" alt="Saint Joseph's University Logo" id="sju-logo">
+        <img src="HaubLogo.png" alt="Haub School of Business Logo" id="haub-logo">
     </div>
 
     <!-- Main Content -->
     <div class="container">
         <h1>AI Teaching Assistant</h1>
+        <!-- First Textbox: Transparent Background -->
         <form id="gptForm">
             <label for="textBox">Your AI Assistant says:</label><br>
             <input type="text" id="textBox" name="textBox" placeholder="Hi! It is your AI teaching assistant at Haub School of Business! How can I help with your learning?">
         </form>
 
-        <!-- GPT Search Box -->
+        <!-- GPT Search Box with rounded corners -->
         <h2>Ask the AI Assistant</h2>
         <form action="your_gpt_api_endpoint" method="POST">
             <input type="text" id="gpt-query" name="gpt-query" placeholder="Ask me anything related to your learning">
