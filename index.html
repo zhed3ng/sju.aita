@@ -44,6 +44,7 @@
             border: 1px solid #ccc; /* Border around the text box */
             border-radius: 15px; /* Rounded corners */
         }
+        /* Rounded Submit Button */
         input[type="submit"] {
             padding: 10px 20px;
             font-size: 16px;
@@ -51,6 +52,10 @@
             color: white;
             border: none;
             cursor: pointer;
+            border-radius: 15px; /* Rounded corners for submit button */
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Slightly darker blue on hover */
         }
         #response {
             margin-top: 20px;
@@ -72,14 +77,14 @@
         <h1>AI Teaching Assistant</h1>
         <!-- First Textbox: Transparent Background -->
         <form id="gptForm">
-            <label for="textBox">Your AI Assistant says:</label><br>
+            <label for="textBox">Your AITA says:</label><br>
             <input type="text" id="textBox" name="textBox" placeholder="Hi! It is your AI teaching assistant at Haub School of Business! How can I help with your learning?">
         </form>
 
         <!-- GPT Search Box with rounded corners -->
         <h2>Ask the AI Assistant</h2>
         <form action="your_gpt_api_endpoint" method="POST">
-            <input type="text" id="gpt-query" name="gpt-query" placeholder="Ask me anything related to your learning, you can narrow down the results by including the class number and semester">
+            <input type="text" id="gpt-query" name="gpt-query" placeholder="Ask me anything related to your learning, let's start with your course number and semester">
             <input type="submit" value="Submit">
         </form>
 
