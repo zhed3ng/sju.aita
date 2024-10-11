@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            padding: 20px; /* Added some padding around the page */
         }
         .header {
             display: flex;
@@ -20,16 +21,19 @@
         }
         .container {
             margin: 50px auto;
-            width: 50%;
+            width: 90%;
+            max-width: 600px;
         }
+
         /* Typewriter effect for the AI message */
         .typewriter-text {
             font-size: 20px;
             white-space: nowrap;
             border-right: 3px solid;
             width: fit-content;
-            margin: 0 auto;
+            margin: 20px auto; /* Space added above and below */
             overflow: hidden;
+            padding-bottom: 20px; /* Space between typewriter text and next section */
         }
         @keyframes typing {
             from { width: 0; }
@@ -42,33 +46,36 @@
             animation: typing 4s steps(60, end), blink-caret 0.75s step-end infinite;
         }
 
-        /* First textbox (AI assistant) - background transparent */
+        /* Responsive First textbox (AI assistant) - background transparent */
         input[type="text"]#textBox {
             width: 100%;
             padding: 15px;
-            margin: 20px 0;
+            margin: 20px 0; /* Space between the label and the box */
             font-size: 16px;
             border: none; /* Remove border */
             outline: none; /* Remove outline */
             background-color: transparent; /* Transparent background */
+            word-wrap: break-word; /* Ensure long text wraps */
         }
         input[type="text"]#textBox:focus {
             background-color: transparent; /* Keep background transparent on focus */
         }
 
-        /* Second textbox (GPT query) - round corners */
+        /* Responsive Second textbox (GPT query) - round corners */
         input[type="text"]#gpt-query {
             width: 100%;
             padding: 15px;
-            margin: 20px 0;
+            margin: 20px 0; /* Added margin around the input box */
             font-size: 16px;
             border: 1px solid #ccc; /* Border around the text box */
             border-radius: 15px; /* Rounded corners */
+            word-wrap: break-word; /* Ensure long text wraps */
         }
 
         /* Rounded Submit Button */
         input[type="submit"] {
             padding: 10px 20px;
+            margin-top: 20px; /* Space between the input box and submit button */
             font-size: 16px;
             background-color: #007bff;
             color: white;
@@ -81,7 +88,7 @@
         }
 
         #response {
-            margin-top: 20px;
+            margin-top: 30px; /* Space between the submit button and the response */
             font-size: 18px;
             color: green;
         }
@@ -105,7 +112,7 @@
         <!-- GPT Search Box with rounded corners -->
         <h2>Ask the AI Assistant</h2>
         <form id="gptForm">
-            <input type="text" id="gpt-query" name="gpt-query" placeholder="Ask me anything related to your learning, starting with the course number">
+            <input type="text" id="gpt-query" name="gpt-query" placeholder="Ask me anything related to your learning">
             <input type="submit" value="Submit">
         </form>
 
