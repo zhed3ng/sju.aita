@@ -8,7 +8,6 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px; /* Added some padding around the page */
         }
         .header {
             display: flex;
@@ -21,74 +20,40 @@
         }
         .container {
             margin: 50px auto;
-            width: 90%;
-            max-width: 600px;
+            width: 50%;
         }
-
-        /* Typewriter effect for the AI message */
-        .typewriter-text {
-            font-size: 20px;
-            white-space: nowrap;
-            border-right: 3px solid;
-            width: fit-content;
-            margin: 20px auto; /* Space added above and below */
-            overflow: hidden;
-            padding-bottom: 20px; /* Space between typewriter text and next section */
-        }
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        @keyframes blink-caret {
-            50% { border-color: transparent; }
-        }
-        .typewriter-text {
-            animation: typing 4s steps(60, end), blink-caret 0.75s step-end infinite;
-        }
-
-        /* Responsive First textbox (AI assistant) - background transparent */
+        /* First textbox (AI assistant) - background transparent */
         input[type="text"]#textBox {
             width: 100%;
             padding: 15px;
-            margin: 20px 0; /* Space between the label and the box */
+            margin: 20px 0;
             font-size: 16px;
             border: none; /* Remove border */
             outline: none; /* Remove outline */
             background-color: transparent; /* Transparent background */
-            word-wrap: break-word; /* Ensure long text wraps */
         }
         input[type="text"]#textBox:focus {
             background-color: transparent; /* Keep background transparent on focus */
         }
-
-        /* Responsive Second textbox (GPT query) - round corners */
+        /* Second textbox (GPT query) - round corners */
         input[type="text"]#gpt-query {
             width: 100%;
             padding: 15px;
-            margin: 20px 0; /* Added margin around the input box */
+            margin: 20px 0;
             font-size: 16px;
             border: 1px solid #ccc; /* Border around the text box */
             border-radius: 15px; /* Rounded corners */
-            word-wrap: break-word; /* Ensure long text wraps */
         }
-
-        /* Rounded Submit Button */
         input[type="submit"] {
             padding: 10px 20px;
-            margin-top: 20px; /* Space between the input box and submit button */
             font-size: 16px;
             background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 15px; /* Rounded corners for submit button */
         }
-        input[type="submit"]:hover {
-            background-color: #0056b3; /* Slightly darker blue on hover */
-        }
-
         #response {
-            margin-top: 30px; /* Space between the submit button and the response */
+            margin-top: 20px;
             font-size: 18px;
             color: green;
         }
@@ -105,13 +70,15 @@
     <!-- Main Content -->
     <div class="container">
         <h1>AI Teaching Assistant</h1>
-
-        <!-- Typewriter effect for AI Assistant message -->
-        <div class="typewriter-text" id="typewriter"></div>
+        <!-- First Textbox: Transparent Background -->
+        <form id="gptForm">
+            <label for="textBox">Your AI Assistant says:</label><br>
+            <input type="text" id="textBox" name="textBox" placeholder="Hi! It is your AI teaching assistant at Haub School of Business! How can I help with your learning?">
+        </form>
 
         <!-- GPT Search Box with rounded corners -->
         <h2>Ask the AI Assistant</h2>
-        <form id="gptForm">
+        <form action="your_gpt_api_endpoint" method="POST">
             <input type="text" id="gpt-query" name="gpt-query" placeholder="Ask me anything related to your learning">
             <input type="submit" value="Submit">
         </form>
@@ -121,31 +88,13 @@
     </div>
 
     <script>
-        // Typewriter effect for the AI message
-        const text = "Hi! It is your AI teaching assistant at Haub School of Business! How can I help with your learning?";
-        let index = 0;
-        const speed = 50; // Speed of typing effect
-
-        function typeWriter() {
-            if (index < text.length) {
-                document.getElementById("typewriter").innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, speed);
-            }
-        }
-
-        // Start the typewriter effect when the page loads
-        window.onload = function() {
-            typeWriter();
-        };
-
         document.getElementById('gptForm').addEventListener('submit', async function(e) {
             e.preventDefault(); // Prevent page reload
 
             // Get user query
-            const query = document.getElementById('gpt-query').value;
+            const query = document.getElementById('query').value;
 
-            // Make a POST request to your GPT API
+            // Make a POST request to your Flask API
             const response = await fetch('https://your-backend-domain.com/gpt-query', {
                 method: 'POST',
                 headers: {
